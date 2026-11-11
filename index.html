@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neon Quadratic Solver</title>
+    <!-- Подключаем современный шрифт -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Фоновые неоновые пятна -->
+    <div class="glow-spot glow-1"></div>
+    <div class="glow-spot glow-2"></div>
+
+    <main class="calculator">
+        <header class="header">
+            <h1>Quadratic<br><span>Solver</span></h1>
+            <p class="subtitle">Решение квадратных уравнений вида</p>
+            
+            <div class="formula">
+                <span class="math">a</span>x<sup>2</sup> + <span class="math">b</span>x + <span class="math">c</span> = 0
+            </div>
+        </header>
+
+        <section class="inputs">
+            <div class="input-group">
+                <label for="inputA">a =</label>
+                <input id="inputA" type="number" placeholder="0" step="any">
+            </div>
+            <div class="input-group">
+                <label for="inputB">b =</label>
+                <input id="inputB" type="number" placeholder="0" step="any">
+            </div>
+            <div class="input-group">
+                <label for="inputC">c =</label>
+                <input id="inputC" type="number" placeholder="0" step="any">
+            </div>
+        </section>
+
+        <button id="button" class="solve-btn">
+            <span>Вычислить</span>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+        </button>
+
+        <div id="answer" class="answer-box"></div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

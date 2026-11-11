@@ -1,0 +1,235 @@
+/* =========================================
+   СБРОС И БАЗА
+========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0b0f19; /* Глубокий тёмный фон */
+    color: #e2e8f0;
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Неоновые свечения на фоне */
+.glow-spot {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+    z-index: 0;
+}
+.glow-1 {
+    width: 400px;
+    height: 400px;
+    background: rgba(139, 92, 246, 0.3); /* Фиолетовый */
+    top: -100px;
+    left: -100px;
+}
+.glow-2 {
+    width: 500px;
+    height: 500px;
+    background: rgba(6, 182, 212, 0.2); /* Голубой */
+    bottom: -200px;
+    right: -100px;
+}
+
+/* =========================================
+   КАЛЬКУЛЯТОР
+========================================= */
+.calculator {
+    position: relative;
+    z-index: 1;
+    background: rgba(20, 25, 40, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    padding: 50px 40px;
+    border-radius: 24px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.header h1 {
+    font-size: 42px;
+    font-weight: 800;
+    line-height: 1.1;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.header h1 span {
+    color: #8b5cf6; /* Неоновый фиолетовый */
+    text-shadow: 0 0 20px rgba(139, 92, 246, 0.6);
+}
+
+.subtitle {
+    font-size: 14px;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+}
+
+.formula {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 24px;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px solid rgba(139, 92, 246, 0.2);
+    color: #cbd5e1;
+}
+
+.formula .math {
+    color: #06b6d4; /* Неоновый голубой */
+    font-weight: 700;
+}
+
+/* =========================================
+   ИНПУТЫ
+========================================= */
+.inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.input-group label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 28px;
+    color: #8b5cf6;
+    text-align: right;
+}
+
+.input-group input {
+    flex: 1;
+    background: rgba(0, 0, 0, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 24px;
+    padding: 15px 20px;
+    border-radius: 12px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+/* Убираем стрелочки у number */
+.input-group input::-webkit-outer-spin-button,
+.input-group input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.input-group input:focus {
+    border-color: #8b5cf6;
+    box-shadow: 0 0 15px rgba(139, 92, 246, 0.4);
+    background: rgba(139, 92, 246, 0.1);
+}
+
+/* =========================================
+   КНОПКА
+========================================= */
+.solve-btn {
+    width: 100%;
+    padding: 20px;
+    background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 20px rgba(139, 92, 246, 0.3);
+}
+
+.solve-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px rgba(139, 92, 246, 0.5);
+    background: linear-gradient(135deg, #a78bfa 0%, #7c3aed 100%);
+}
+
+.solve-btn:active {
+    transform: translateY(1px);
+}
+
+/* =========================================
+   ОТВЕТ
+========================================= */
+.answer-box {
+    margin-top: 30px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 16px;
+    line-height: 1.6;
+    text-align: center;
+    min-height: 60px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.4s ease;
+}
+
+.answer-box.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Стили для разных статусов */
+.answer-box.success {
+    color: #10b981; /* Зелёный */
+    text-shadow: 0 0 10px rgba(16, 185, 129, 0.3);
+}
+
+.answer-box.error {
+    color: #ef4444; /* Красный */
+    text-shadow: 0 0 10px rgba(239, 68, 68, 0.3);
+}
+
+.answer-box.warning {
+    color: #f59e0b; /* Оранжевый */
+    text-shadow: 0 0 10px rgba(245, 158, 11, 0.3);
+}
+
+/* Адаптив */
+@media (max-width: 480px) {
+    .calculator {
+        padding: 30px 20px;
+        border-radius: 0;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .header h1 {
+        font-size: 32px;
+    }
+}
